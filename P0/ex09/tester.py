@@ -1,5 +1,6 @@
 from ft_package import ft_morse
 
+
 def main():
     phrase = "je m appelle ilona"
     print("avant :", phrase)
