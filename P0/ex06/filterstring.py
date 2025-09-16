@@ -3,15 +3,19 @@ import sys
 
 
 def main():
-    s = sys.argv[1]
     try:
-        n = int(sys.argv[2])
-    except:
-        raise ("n must be an integer")
-    myList = s.split()
-    print(myList)
-    myList = ft_filter(lambda word: len(word) > n, myList)
-    print(myList)
+        try:
+            s = sys.argv[1]
+            n = int(sys.argv[2])
+        except IndexError:
+            raise AssertionError()
+        except ValueError:
+            raise AssertionError()
+        myList = s.split()
+        myList = ft_filter(lambda word: len(word) > n, myList)
+        print(myList)
+    except AssertionError:
+        print("AssertionError: the arguments are bad")
 
 
 if __name__ == "__main__":

@@ -3,27 +3,27 @@ import string
 
 
 def count_digits(s):
-    # compte les chiffres dans une string
+    """ compte les chiffres dans une string"""
     return sum(c.isdigit() for c in s)
 
 
 def count_lower_letters(s):
-    # compte les lettre minuscules dans une string
+    """compte les lettre minuscules dans une string"""
     return sum(c.islower() for c in s)
 
 
 def count_upper_letters(s):
-    # compte les lettre majuscules dans une string
+    """compte les lettre majuscules dans une string"""
     return sum(c.isupper() for c in s)
 
 
 def count_punctuation_letters(s):
-    # compte la ponctuation dans une string
+    """compte la ponctuation dans une string"""
     return sum(1 for c in s if c in string.punctuation)
 
 
 def count_space_letters(s):
-    # compte les espaces dans une string
+    """compte les espaces dans une string"""
     return sum(c.isspace() for c in s)
 
 
