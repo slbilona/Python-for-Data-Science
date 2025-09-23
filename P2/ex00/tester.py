@@ -2,7 +2,10 @@ from load_csv import load
 
 
 def main():
-    print(load("life_expectancy_years.csv"))
+    try:
+        print(load("life_expectancy_years.csv"))
+    except Exception as error:
+        print("error :", error)
 
 
 if __name__ == "__main__":
