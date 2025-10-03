@@ -1,26 +1,31 @@
 from load_csv import load
 import matplotlib.pyplot as plt
 import pandas as pd
+from matplotlib.ticker import ScalarFormatter
 
 
 def main():
     try:
-        df = load("population_total.csv")
-        france_row = df[df["country"] == "France"]
-        belgique_row = df[df["country"] == "Belgium"]
-        france_data = france_row.drop(columns=["country"]).iloc[0]
-        belgique_data = belgique_row.drop(columns=["country"]).iloc[0]
-        years_france = france_data.index.astype(int)
-        years_belgique = belgique_data.index.astype(int)
-        values_num_france = [float(v.replace("M", "")) for v in france_data.values]
-        values_num_belgique = [float(v.replace("M", "")) for v in belgique_data.values]
-        plt.plot(years_france, values_num_france, label="France", color="blue")
-        plt.plot(years_belgique, values_num_belgique, label="Belgique", color="pink")
-        plt.title("Population Projections")
-        plt.xlabel("Year")
-        plt.ylabel("Population")
-        plt.legend()
-        plt.xlim(min(years_belgique), 2050)
+        df1 = load("income_per_person_gdppercapita_ppp_inflation_adjusted.csv")
+        df2 = load("life_expectancy_years.csv")
+        # Nettoyer les noms de colonnes (supprime les espaces invisibles)
+        df1.columns = df1.columns.str.strip()
+        df2.columns = df2.columns.str.strip()
+        # Ne garder que 'country' + l'année 1900
+        df1_1900 = df1[["country", "1900"]].rename(columns={"1900":
+                                                            "gdp_1900"})
+        df2_1900 = df2[["country", "1900"]].rename(columns={"1900":
+                                                            "life_1900"})
+        # Fusionner sur 'country'
+        df_merged = pd.merge(df1_1900, df2_1900, on="country", how="inner")
+        print(df_merged.head())
+        plt.plot(df_merged["gdp_1900"], df_merged["life_1900"], 'o')
+        plt.xlabel("Gross domestic product")
+        plt.ylabel("Life expectancy")
+        plt.title("1900")
+        plt.xscale('log')
+        plt.gca().xaxis.set_major_formatter(ScalarFormatter())
+        plt.gca().xaxis.get_major_formatter().set_scientific(False)
         plt.show()
     except Exception as error:
         print("error :", error)
