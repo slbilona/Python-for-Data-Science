@@ -5,9 +5,10 @@ class Baratheon(Character):
     """
     Classe représentant un personnage de la maison Baratheon.
 
-    Hérite de la classe abstraite Character. Définit des attributs
-    spécifiques à la maison Baratheon comme family_name, yeux et cheveux.
+    Hérite de la classe abstraite Character. Définit des attributs spécifiques
+    à la maison Baratheon comme family_name, yeux et cheveux.
     """
+
     def __init__(self, first_name, is_alive=True):
         """
         Initialise un personnage Baratheon.
@@ -19,8 +20,7 @@ class Baratheon(Character):
                                         Par défaut True.
 
         Raises:
-            Exception : relance toute exception provenant de la classe
-            parente.
+            Exception : relance toute exception provenant de la classe parente.
         """
         try:
             super().__init__(first_name, is_alive)
