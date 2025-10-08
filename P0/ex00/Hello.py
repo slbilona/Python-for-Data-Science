@@ -9,4 +9,5 @@ def main():
     print(ft_dict)
 
 
-main()
+if __name__ == '__main__':
+    main()
