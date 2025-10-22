@@ -35,7 +35,7 @@ def main():
         if len(sys.argv) < 2:
             while len(argument) == 0:
                 print("What is the text to count?")
-                argument = input()
+                argument = sys.stdin.read()
         else:
             argument = sys.argv[1]
         print("The text contains", len(argument), "characters:")
