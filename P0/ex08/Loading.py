@@ -3,7 +3,7 @@ def ft_tqdm(lst: range) -> None:
     fonction pour afficher l'avancer d'une boucle
     """
     total = len(lst)
-    longueur_barre = 60
+    longueur_barre = 70
 
     for i, elem in enumerate(lst, 1):
         percent = i / total
