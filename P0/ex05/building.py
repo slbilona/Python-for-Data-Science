@@ -33,9 +33,10 @@ def main():
         if len(sys.argv) > 2:
             raise AssertionError("more than one argument is provided")
         if len(sys.argv) < 2:
-            while len(argument) == 0:
-                print("What is the text to count?")
-                argument = sys.stdin.read()
+            print("What is the text to count ?")
+            argument = ""
+            for line in sys.stdin:
+                argument += line
         else:
             argument = sys.argv[1]
         print("The text contains", len(argument), "characters:")

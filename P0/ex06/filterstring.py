@@ -11,7 +11,7 @@ def main():
             raise AssertionError()
         except ValueError:
             raise AssertionError()
-        myList = s.split()
+        myList = [word for word in s.strip().split(' ') if word != '']
         myList = ft_filter(lambda word: len(word) > n, myList)
         print(myList)
     except AssertionError:
